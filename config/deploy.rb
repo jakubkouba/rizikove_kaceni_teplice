@@ -1,8 +1,8 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.11.0"
+lock "~> 3.19.0"
 
 set :application, "rizikove_kaceni_teplice"
-set :repo_url, "git@github.com:wizard2nd/rizikove_kaceni_teplice.git"
+set :repo_url, "git@github.com:jakubkouba/rizikove_kaceni_teplice.git"
 
 # Default branch is :master
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -10,7 +10,7 @@ ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :deploy_to, "/home/git/apps/rizikovekaceni/#{fetch(:stage)}"
 
 # Insltall Composer
-SSHKit.config.command_map[:composer] = "php #{shared_path.join("composer.phar")}"
+SSHKit.config.command_map[:composer] = "composer"
 
 ask :sync_db, 'no'
 ask :sync_uploads, 'no'

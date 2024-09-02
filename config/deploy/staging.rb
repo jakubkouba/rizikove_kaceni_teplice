@@ -7,13 +7,13 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 set :stage, :staging
 
-server "rizikovekaceni-teplice.stage.goodcodecrusader.com", 
+server "fortyunbroken.com", 
 user: "git", 
 roles: %w{app web db},
 ssh_options: {
 	user: "git",
 	forward_agent: true,
-	keys: "~/.ssh/do_git"
+	keys: ENV['PRIVE_KEY_PATH']
 }
 
 set :wpcli_remote_url, 'http://rizikovekaceni-teplice.stage.goodcodecrusader.com'
