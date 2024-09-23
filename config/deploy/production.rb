@@ -1,15 +1,6 @@
 set :stage, :production
 set :branch, 'master'
 
-server "rizikovekaceni-teplice.production.goodcodecrusader.com", 
-user: "git", 
-roles: %w{app web db},
-ssh_options: {
-	user: "git",
-	forward_agent: true,
-	keys: "~/.ssh/do_git"
-}
-
 set :wpcli_remote_url, 'https://rizikovekaceni-teplice.cz'
 
 #

@@ -3,6 +3,7 @@ lock "~> 3.19.0"
 
 set :application, "rizikove_kaceni_teplice"
 set :repo_url, "git@github.com:jakubkouba/rizikove_kaceni_teplice.git"
+server 'fortyunbroken.com', user: 'git', roles: %w[app web db]
 
 # Default branch is :master
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
