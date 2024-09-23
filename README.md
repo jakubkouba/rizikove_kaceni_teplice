@@ -1,9 +1,8 @@
-# [Bedrock](https://roots.io/bedrock/)
-[![Build Status](https://travis-ci.org/roots/bedrock.svg)](https://travis-ci.org/roots/bedrock)
 
-Bedrock is a modern WordPress stack that helps you get started with the best development tools and project structure.
+# Rizikove Kaceni teplice
+Site is base on the [Bedrock](https://roots.io/bedrock/). Bedrock is a modern WordPress stack that helps you get started with the best development tools and project structure. Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](http://12factor.net/) methodology including the [WordPress specific version](https://roots.io/twelve-factor-wordpress/).
 
-Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](http://12factor.net/) methodology including the [WordPress specific version](https://roots.io/twelve-factor-wordpress/).
+It also uses Sage base theme
 
 ## Features
 
@@ -22,7 +21,9 @@ Use [bedrock-ansible](https://github.com/roots/bedrock-ansible) for additional f
 ## Requirements
 
 * PHP >= 5.4
-* Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
+* Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) It uses old version of the composer (when installing composer, it needs to be downgraded) As of now 23.0 2024 the dependency packages were updated to the oldest versions (It works but the whole stack including PHP should be updated)
+* npm (Grunt for assets build)
+* bower (assets libraries download)
 
 ## Installation
 
@@ -41,25 +42,24 @@ Use [bedrock-ansible](https://github.com/roots/bedrock-ansible) for additional f
 5. Access WP admin at `http://example.com/wp/wp-admin`
 
 ## Custom deploy
+The whole site is deployed via Capistano
+
+### dependency 
+- It depends in the ACF (Advance Custom Fields) placed in the `~/apps/rizikovekaceni/external-plugins/acf-repeater` and is copied to `web/app/plugins`
+The backup is in the `/home/git/backup/rizikove-kaceni`
+- .env config file containing DB connection config and WP specific config. It is different for each environment as different env have different values
+it sits in the `{environment}/shared/.env`. It contains value from point 3 in the **Installation** part. The values for the DB connection are stored in the Enpass (Janko Wordpres) it contains username and password db prefix etc
+- DB. It uses locally installed MySQL database. Access credentials are also saved in Enpass
+- SSH. It is required to have a host configured in the `~/.ssh/config` as for some reason, the underling ssh service take the ssh keys from ssh-agent. It uses all the keys and if the target server have limited amount attempts to log in. It will fail.  
 
 1. Composer install / update
-2. Install or update node / npm
-3. run npm install
-4. run bower install
-5. install grunt
-6. install sass gem
-7. run grunt build
-
-## Deploys
-
-There are two methods to deploy Bedrock sites out of the box:
-
-* [bedrock-ansible](https://github.com/roots/bedrock-ansible)
-* [bedrock-capistrano](https://github.com/roots/bedrock-capistrano)
-
-Any other deployment method can be used as well with one requirement:
-
-`composer install` must be run as part of the deploy process.
+2. On the target server install:
+   - node, npm
+   - bower
+   - sass gem (used by Grunt)
+3. `$ bundle`
+4. `$ bundle exec cap staging / production deploy`
+9. hit /reset_cache.php after production deployment (add rake task to do that)
 
 ## Documentation
 
@@ -69,10 +69,6 @@ Any other deployment method can be used as well with one requirement:
 * [Composer](https://github.com/roots/bedrock/wiki/Composer)
 * [wp-cron](https://github.com/roots/bedrock/wiki/wp-cron)
 * [mu-plugins autoloader](https://github.com/roots/bedrock/wiki/mu-plugins-autoloader)
-
-## Contributing
-
-Contributions are welcome from everyone. We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
 
 ## Community
 
