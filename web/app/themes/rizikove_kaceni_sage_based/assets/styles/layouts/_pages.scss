@@ -2,11 +2,11 @@
   position: relative;
   opacity: 0;
 
-  -webkit-transition: opacity 0.5s linear 1s, top 0.5s linear 1s;
-  -moz-transition: opacity 0.5s linear 1s, top 0.5s linear 1s;
-  -ms-transition: opacity 0.5s linear 1s, top 0.5s linear 1s;
-  -o-transition: opacity 0.5s linear 1s, top 0.5s linear 1s;
-  transition: opacity 0.5s linear 1s, top 0.5s linear 1s;
+  -webkit-transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
+  -moz-transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
+  -ms-transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
+  -o-transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
+  transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
 
   &--show{
     top: 0;
@@ -15,11 +15,11 @@
   }
 
   @include modular-mq(tablet){
-    -webkit-transition: opacity 0.5s linear 1s, top 0.5s linear 1s;
-    -moz-transition: opacity 0.5s linear 1s, top 0.5s linear 1s;
-    -ms-transition: opacity 0.5s linear 1s, top 0.5s linear 1s;
-    -o-transition: opacity 0.5s linear 1s, top 0.5s linear 1s;
-    transition: opacity 0.5s linear 1s, top 0.5s linear 1s;
+    -webkit-transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
+    -moz-transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
+    -ms-transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
+    -o-transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
+    transition: opacity 0.5s linear 0.5s, top 0.5s linear 0.5s;
 
   }
 
